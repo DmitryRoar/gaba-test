@@ -1,5 +1,7 @@
 import { type ReactNode } from 'react';
 
+import { ToastProvider } from '@ui';
+
 import { QueryProvider } from './query-provider';
 
 export { ThemeScript } from './theme-script';
@@ -9,5 +11,10 @@ interface ProvidersProps {
 }
 
 export const Providers = ({ children }: ProvidersProps) => {
-  return <QueryProvider>{children}</QueryProvider>;
+  return (
+    <QueryProvider>
+      {children}
+      <ToastProvider />
+    </QueryProvider>
+  );
 };
