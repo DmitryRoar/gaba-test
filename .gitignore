@@ -12,10 +12,16 @@
 
 # testing
 /coverage
+/playwright-report
+/test-results
+/playwright/.cache
 
 # next.js
 /.next/
 /out/
+
+# storybook
+/storybook-static
 
 # production
 /build
@@ -39,3 +45,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# turbopack
+.turbo

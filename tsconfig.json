@@ -1,10 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2022",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -19,16 +23,38 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"],
+      "@ui": ["./src/shared/ui"],
+      "@api": ["./src/shared/api"],
+      "@lib": ["./src/shared/lib"],
+      "@hooks": ["./src/shared/hooks"],
+      "@utils": ["./src/shared/utils"],
+      "@constants": ["./src/shared/constants"],
+      "@schemas": ["./src/shared/schemas"],
+      "@types": ["./src/shared/types"],
+      "@config": ["./src/shared/config"],
+      "@icons/*": ["./src/shared/assets/icons/*"],
+      "@img/*": ["./src/shared/assets/img/*"],
+      "@entities": ["./src/entities"],
+      "@features": ["./src/features"],
+      "@widgets": ["./src/widgets"],
+      "@app/*": ["./src/app/*"]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.mts",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "RemControl",
+    "packages",
+    ".next",
+    "storybook-static",
+    "playwright-report"
+  ]
 }

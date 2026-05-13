@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+build
+coverage
+storybook-static
+playwright-report
+test-results
+.turbo
+pnpm-lock.yaml
+RemControl
+packages
+next-env.d.ts
+*.tsbuildinfo
