@@ -1,0 +1,26 @@
+'use client';
+
+export {
+  Modal,
+  ModalBackdrop,
+  ModalBody,
+  ModalCloseTrigger,
+  ModalContainer,
+  ModalDialog,
+  ModalFooter,
+  ModalHeader,
+  ModalHeading,
+  ModalIcon,
+  ModalTrigger,
+  type ModalBackdropProps,
+  type ModalBodyProps,
+  type ModalCloseTriggerProps,
+  type ModalContainerProps,
+  type ModalDialogProps,
+  type ModalFooterProps,
+  type ModalHeaderProps,
+  type ModalHeadingProps,
+  type ModalIconProps,
+  type ModalProps,
+  type ModalTriggerProps,
+} from '@heroui/react';
