@@ -26,6 +26,7 @@
       "@/*": ["./src/*"],
       "@ui": ["./src/shared/ui"],
       "@api": ["./src/shared/api"],
+      "@api/*": ["./src/shared/api/*"],
       "@lib": ["./src/shared/lib"],
       "@hooks": ["./src/shared/hooks"],
       "@utils": ["./src/shared/utils"],
@@ -36,8 +37,11 @@
       "@icons/*": ["./src/shared/assets/icons/*"],
       "@img/*": ["./src/shared/assets/img/*"],
       "@entities": ["./src/entities"],
+      "@entities/*": ["./src/entities/*"],
       "@features": ["./src/features"],
+      "@features/*": ["./src/features/*"],
       "@widgets": ["./src/widgets"],
+      "@widgets/*": ["./src/widgets/*"],
       "@app/*": ["./src/app/*"]
     }
   },
@@ -52,6 +56,7 @@
   "exclude": [
     "node_modules",
     "RemControl",
+    "remcontrol",
     "packages",
     ".next",
     "storybook-static",
