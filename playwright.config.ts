@@ -9,12 +9,16 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? '50%' : undefined,
   reporter: process.env.CI ? [['html'], ['github']] : 'list',
+  timeout: process.env.CI ? 60_000 : 30_000,
+  expect: { timeout: process.env.CI ? 15_000 : 5_000 },
   use: {
     baseURL,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
+    navigationTimeout: process.env.CI ? 30_000 : 15_000,
+    actionTimeout: process.env.CI ? 15_000 : 5_000,
   },
   projects: [
     { name: 'setup', testMatch: /.*\.setup\.ts/ },
@@ -35,7 +39,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm dev',
+    command: process.env.CI ? 'pnpm start' : 'pnpm dev',
     url: baseURL,
     timeout: 120_000,
     reuseExistingServer: !process.env.CI,
