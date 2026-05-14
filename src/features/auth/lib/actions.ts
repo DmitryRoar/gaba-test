@@ -1,6 +1,6 @@
 'use server';
 
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { UserApi } from '@entities';
@@ -10,12 +10,15 @@ const REFRESH_TOKEN = 'refreshToken';
 const ACCESS_TOKEN_MAX_AGE = 60 * 30;
 const REFRESH_TOKEN_MAX_AGE = 60 * 60 * 24 * 7;
 
-const cookieOptions = () => ({
-  httpOnly: true,
-  secure: process.env.NODE_ENV === 'production',
-  sameSite: 'lax' as const,
-  path: '/',
-});
+async function cookieOptions() {
+  const proto = (await headers()).get('x-forwarded-proto');
+  return {
+    httpOnly: true,
+    secure: proto === 'https',
+    sameSite: 'lax' as const,
+    path: '/',
+  };
+}
 
 export interface LoginActionState {
   error?: string;
@@ -37,13 +40,13 @@ export async function loginAction(
     return { error: 'Invalid credentials' };
   }
 
-  const store = await cookies();
+  const [store, baseOptions] = await Promise.all([cookies(), cookieOptions()]);
   store.set(ACCESS_TOKEN, session.accessToken, {
-    ...cookieOptions(),
+    ...baseOptions,
     maxAge: ACCESS_TOKEN_MAX_AGE,
   });
   store.set(REFRESH_TOKEN, session.refreshToken, {
-    ...cookieOptions(),
+    ...baseOptions,
     maxAge: REFRESH_TOKEN_MAX_AGE,
   });
 
