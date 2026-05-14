@@ -31,7 +31,9 @@ jobs:
   e2e:
     name: E2E (playwright)
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
+    env:
+      PLAYWRIGHT_PROJECT: ${{ github.event_name == 'pull_request' && 'chromium' || '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
@@ -42,10 +44,28 @@ jobs:
         with:
           path: ~/.cache/ms-playwright
           key: pw-${{ runner.os }}-${{ steps.pw.outputs.version }}
-      - run: pnpm exec playwright install --with-deps
+      - uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('**/*.ts', '**/*.tsx', '**/*.css') }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}-
+      - shell: bash
+        run: |
+          if [ -n "$PLAYWRIGHT_PROJECT" ]; then
+            pnpm exec playwright install --with-deps "$PLAYWRIGHT_PROJECT"
+          else
+            pnpm exec playwright install --with-deps
+          fi
       - run: cp .env.example .env.local
       - run: pnpm build
-      - run: pnpm test:e2e
+      - shell: bash
+        run: |
+          if [ -n "$PLAYWRIGHT_PROJECT" ]; then
+            pnpm test:e2e --project=setup --project="$PLAYWRIGHT_PROJECT"
+          else
+            pnpm test:e2e
+          fi
       - if: failure()
         uses: actions/upload-artifact@v4
         with:
