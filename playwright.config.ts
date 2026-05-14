@@ -2,6 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 const PORT = process.env.PORT ?? '3000';
 const baseURL = `http://localhost:${PORT}`;
+const STORAGE_STATE = 'playwright/.auth/user.json';
 
 export default defineConfig({
   testDir: './tests',
@@ -16,9 +17,22 @@ export default defineConfig({
     screenshot: 'only-on-failure',
   },
   projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
-    { name: 'webkit', use: { ...devices['Desktop Safari'] } },
+    { name: 'setup', testMatch: /.*\.setup\.ts/ },
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'], storageState: STORAGE_STATE },
+      dependencies: ['setup'],
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'], storageState: STORAGE_STATE },
+      dependencies: ['setup'],
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'], storageState: STORAGE_STATE },
+      dependencies: ['setup'],
+    },
   ],
   webServer: {
     command: 'pnpm dev',

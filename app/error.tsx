@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react';
 
+import { Button, Typography } from '@ui';
+
 interface ErrorPageProps {
   error: Error & { digest?: string };
   reset: () => void;
@@ -14,17 +16,15 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
 
   return (
     <section className="mx-auto flex w-full max-w-md flex-1 flex-col items-start justify-center gap-4 px-6 py-24">
-      <h1 className="text-heading-h3 text-danger">Something went wrong</h1>
-      <p className="text-fg-muted text-paragraph-14r">
+      <Typography variant="h2" tone="danger" as="h1">
+        Something went wrong
+      </Typography>
+      <Typography variant="body" tone="muted">
         {error.message || 'An unexpected error occurred.'}
-      </p>
-      <button
-        type="button"
-        onClick={reset}
-        className="bg-primary text-primary-fg text-paragraph-14sb h-10 rounded-md px-4"
-      >
+      </Typography>
+      <Button variant="primary" onPress={reset}>
         Try again
-      </button>
+      </Button>
     </section>
   );
 }
