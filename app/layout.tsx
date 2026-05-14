@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from 'next/font/google';
 
 import { Providers, ThemeScript } from '@app/providers';
 
+import { clientEnv } from '@/shared';
+
 import './globals.css';
 
 const geistSans = Geist({
@@ -21,8 +23,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'gaba-test',
-    template: '%s · gaba-test',
+    default: clientEnv.NEXT_PUBLIC_APP_NAME,
+    template: `%s | ${clientEnv.NEXT_PUBLIC_APP_NAME}`,
   },
   description: 'Next.js 16 + FSD foundation.',
 };

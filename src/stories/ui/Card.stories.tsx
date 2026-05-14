@@ -18,7 +18,7 @@ export const Default: Story = {
     <Card>
       <CardHeader>
         <CardTitle>Frontend Radio</CardTitle>
-        <CardDescription>Daily Mix · 12 tracks</CardDescription>
+        <CardDescription>Daily Mix | 12 tracks</CardDescription>
       </CardHeader>
       <CardContent>
         Compound card built from Card / CardHeader / CardTitle / CardDescription / CardContent /

@@ -35,20 +35,20 @@ export const Playground: Story = {};
 export const Scale: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <Typography variant="display">Display · clamp 48–72</Typography>
-      <Typography variant="h1">Heading h1 · clamp 34–44</Typography>
-      <Typography variant="h2">Heading h2 · 28/36</Typography>
-      <Typography variant="h3">Heading h3 · 20/28</Typography>
+      <Typography variant="display">Display | clamp 48–72</Typography>
+      <Typography variant="h1">Heading h1 | clamp 34–44</Typography>
+      <Typography variant="h2">Heading h2 | 28/36</Typography>
+      <Typography variant="h3">Heading h3 | 20/28</Typography>
       <Typography variant="body-lg">
-        Body large · 18/28 — lead paragraphs and prominent text.
+        Body large | 18/28 — lead paragraphs and prominent text.
       </Typography>
       <Typography variant="body">
-        Body · 16/26 — the default reading size for long form content.
+        Body | 16/26 — the default reading size for long form content.
       </Typography>
       <Typography variant="body-sm">
-        Body small · 14/22 — secondary content, table cells, helper.
+        Body small | 14/22 — secondary content, table cells, helper.
       </Typography>
-      <Typography variant="caption">Caption · 12/16 — labels, tags, metadata.</Typography>
+      <Typography variant="caption">Caption | 12/16 — labels, tags, metadata.</Typography>
     </div>
   ),
 };
@@ -57,16 +57,16 @@ export const Weights: Story = {
   render: () => (
     <div className="flex flex-col gap-2">
       <Typography variant="body-lg" weight="regular">
-        Regular · 400
+        Regular | 400
       </Typography>
       <Typography variant="body-lg" weight="medium">
-        Medium · 500
+        Medium | 500
       </Typography>
       <Typography variant="body-lg" weight="semibold">
-        Semibold · 600
+        Semibold | 600
       </Typography>
       <Typography variant="body-lg" weight="bold">
-        Bold · 700
+        Bold | 700
       </Typography>
     </div>
   ),

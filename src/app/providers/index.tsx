@@ -14,7 +14,7 @@ export const Providers = ({ children }: ProvidersProps) => {
   return (
     <QueryProvider>
       {children}
-      <ToastProvider />
+      <ToastProvider placement="bottom end" />
     </QueryProvider>
   );
 };
