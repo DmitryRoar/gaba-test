@@ -24,6 +24,8 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@heroui/react": "^3.0.4",
     "@heroui/styles": "^3.0.4",
     "@hookform/resolvers": "^5.2.2",
