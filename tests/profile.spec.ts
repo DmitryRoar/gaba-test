@@ -29,6 +29,6 @@ test.describe('profile auth guard', () => {
 
   test('redirects unauthenticated users to login', async ({ page }) => {
     await page.goto('/dashboard/me');
-    await page.waitForURL('**/login');
+    await page.waitForURL(/\/login(\?|$)/);
   });
 });

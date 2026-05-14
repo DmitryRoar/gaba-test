@@ -18,7 +18,7 @@ test.describe('login', () => {
     await page.getByLabel('Username').fill('emilys');
     await page.getByLabel('Password').fill('wrong-password');
     await page.getByRole('button', { name: /sign in/i }).click();
-    await expect(page.getByRole('alert')).toHaveText(/invalid credentials/i);
+    await expect(page.getByRole('alert').filter({ hasText: /invalid credentials/i })).toBeVisible();
     await expect(page).toHaveURL(/\/login$/);
   });
 
