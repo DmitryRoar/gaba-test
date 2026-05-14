@@ -1,18 +1,19 @@
-import { Skeleton } from '@ui';
+import { CartListSkeleton, UserSkeleton } from '@features';
+
+import { ArrowLeftIcon, Skeleton } from '@ui';
+
+import UserProfileTabsNavSkeleton from './UserProfileTabsNavSkeleton';
 
 const UserProfileSkeleton = () => (
   <>
-    <div className="flex items-center gap-4">
-      <Skeleton className="size-20 rounded-full" />
-      <div className="flex flex-1 flex-col gap-3">
-        <Skeleton className="h-8 w-64 rounded-md" />
-        <Skeleton className="h-4 w-48 rounded-md" />
-      </div>
+    <div className="inline-flex w-fit items-center gap-2">
+      <ArrowLeftIcon className="text-fg-muted" />
+      <Skeleton className="h-4 w-28 rounded-md" />
     </div>
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      {Array.from({ length: 4 }, (_, i) => (
-        <Skeleton key={i} className="h-40 rounded-md" />
-      ))}
+    <UserSkeleton />
+    <div className="flex flex-col gap-6">
+      <UserProfileTabsNavSkeleton />
+      <CartListSkeleton />
     </div>
   </>
 );
