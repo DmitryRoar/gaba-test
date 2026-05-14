@@ -16,6 +16,7 @@ const eslintConfig = defineConfig([
     'coverage/**',
     'next-env.d.ts',
     'RemControl/**',
+    'remcontrol/**',
     'packages/**',
   ]),
 
@@ -58,7 +59,6 @@ const eslintConfig = defineConfig([
 
   {
     rules: {
-      'import/no-default-export': 'warn',
       '@typescript-eslint/consistent-type-imports': [
         'warn',
         { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
@@ -68,24 +68,6 @@ const eslintConfig = defineConfig([
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
     },
-  },
-
-  {
-    files: [
-      'app/**/*.{ts,tsx}',
-      'proxy.ts',
-      'next.config.ts',
-      '**/*.stories.{ts,tsx}',
-      'playwright.config.ts',
-      'vitest.config.mts',
-      'commitlint.config.mjs',
-      '.storybook/**/*',
-      '*.config.{js,mjs,cjs,ts}',
-      '.prettierrc.mjs',
-      'postcss.config.mjs',
-      'eslint.config.mjs',
-    ],
-    rules: { 'import/no-default-export': 'off' },
   },
 ]);
 

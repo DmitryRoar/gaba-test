@@ -1,3 +1,14 @@
 'use client';
 
-export { Switch, type SwitchProps } from '@heroui/react';
+export {
+  Switch,
+  SwitchContent,
+  SwitchControl,
+  SwitchIcon,
+  SwitchThumb,
+  type SwitchContentProps,
+  type SwitchControlProps,
+  type SwitchIconProps,
+  type SwitchProps,
+  type SwitchThumbProps,
+} from '@heroui/react';
